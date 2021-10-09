@@ -35,8 +35,9 @@ config_shadowsocks(){
   
   eval set -- "$GETOPT_ARGS"
   echo $@  
+  serverIp=$(ip addr show eth0 | grep 'inet '|awk '{print $2}'|awk -F / '{print $1}')
+  password="272232"
   while [ -n "$1" ]
-    
    do
       case "$1" in
         -s|--server) serverIp=$2; shift 2;;
